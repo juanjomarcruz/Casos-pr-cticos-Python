@@ -131,11 +131,13 @@ def divisores(x):
 divisores(10)
 '''Define una función que tome una lista y retorne una nueva lista con
 los elementos únicos de la lista original.'''
-def originals(lista_1):
-  for i in lista_1:
-    for j in lista_1:
-      if i==j:
-        break
+def elementos_unicos(lista):
+  lista_unicos = []
+  for elemento in lista:
+    if elemento not in lista_unicos:
+      lista_unicos.append(elemento)
+  return lista_unicos
+elementos_unicos([1,4,2,8,8,9,3,8,9])
 '''Define una función que tome un número y retorne la suma de sus
 dígitos.'''
 def suma_digitos():
@@ -339,6 +341,21 @@ def suma_acumulada(lista):
 suma_acumulada([1,0,3,4,25])
 '''Define una función que encuentre el elemento más común en una
 lista.'''
+def mas_comun(lista):
+  diccionario={}
+  for i in lista:
+    if i in diccionario:
+      diccionario[i]+=1
+    else:
+      diccionario[i]=1
+  maxima_frecuencia=0
+  for key,value in diccionario.items():
+    if value > maxima_frecuencia:
+      elemento_mas_frecuente=key
+      maxima_frecuencia=value
+  print(elemento_mas_frecuente)
+  return elemento_mas_frecuente
+mas_comun([1,4,2,7,9,9,9,4,5])
 '''Define una función que tome un número y retorne un diccionario con
 la tabla de multiplicar de ese número del 1 al 10.'''
 def tabla_multiplicar(x):
@@ -373,6 +390,14 @@ def unicos(lista_1,lista_2):
 print(unicos([1,8,3,57,23], [43,8,67,3,2]))
 '''Define una función que tome una lista y retorne la lista sin
 duplicados.'''
+def no_duplicates(lista):
+  lista_unicos=[]
+  for elemento in lista:
+    if elemento not in lista_unicos:
+      lista_unicos.append(elemento)
+  print(lista_unicos)
+  return lista_unicos
+no_duplicates([1,4,2,7,8,9,3,8,9])
 '''Define una función que reciba un número entero positivo y retorne la
 suma de los cuadrados de todos los números pares menores o iguales a ese
 número.'''
@@ -406,12 +431,17 @@ cadena_mas_larga(['Hola','Pájaro','Esternocleidomastoideo'])
 '''Define una función que reciba un número entero n y retorne una lista
 con los n primeros números primos.'''
 def n_primos(n):
-  lista_primos=range(2,n)
-  for i in range(2,n):
-    if n%i==0:
-      lista_primos.remove(i)
+  lista_primos=[]
+  contador=0
+  i=0
+  while contador<n:
+    if es_primo(i)==True:
+      lista_primos.append(i)
+      contador+=1
+    i+=1
   print(lista_primos)
   return lista_primos
+n_primos(9)
 '''Define una función que reciba una cadena y retorne la misma cadena
 pero con las palabras en orden inverso.'''
 def inverse(string):
