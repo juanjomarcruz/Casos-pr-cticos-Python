@@ -1,3 +1,4 @@
+import psycopg2
 def crear_tablero():
   tablero=[[" " for i in range(3)] for i in range(3)]
   return tablero
