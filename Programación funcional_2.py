@@ -1,6 +1,6 @@
 def procesar_datos(operación,a,b,*args,**kwargs): #en lugar de meter a y b como argumentos podemos poner solo *args.
   if operación.lower()=='sumar':
-    resultado=kwargs['valor_inicial']+a+b #también podemos hacer resutado=kwargs.get('valor_inicial',0)
+    resultado=kwargs['valor_inicial']+a+b #también podemos hacer resultado=kwargs.get('valor_inicial',0)
     for arg in args:
         resultado+=arg
   elif operación.lower()=='restar':
@@ -42,16 +42,20 @@ print(filtered_numbers)
 
 people = {"Alice": 30, "Bob": 25, "Charlie": 35, "David": 40}
 
-ordenado=dict(sorted(people.items(),key= lambda tuple: tuple[1]) )#es necesario la función .items porque .items te da el diccionario en tuplas clave-valor, que son elementos iterables y recordemos que la función sorted requiere un iterable.
+ordenado=dict(sorted(people.items(),key= lambda tuple: tuple[1]) ) #es necesario la función .items porque .items te da el diccionario en tuplas clave-valor, que son elementos iterables y recordemos que la función sorted requiere un iterable.
 print(ordenado)
 
 def ordenacion_dict(diccionario):
-  ordenado=dict(sorted(diccionario.items(),key= lambda tuple: tuple[1]) )
-  dict_ordenado=dict(ordenado)
+  dict_ordenado=dict(sorted(diccionario.items(),key= lambda tuple: tuple[1]) )
   return dict_ordenado
 
 print(ordenacion_dict(people))
 
-numbers = [1, 2, 3, 4, 5]
+numbers = [1, 2, 3, 4, 5, 7, 10]
 
-num_cuadrado=list(map(lambda x:x**2,))
+def mayor_que_5(numeros):
+  lista=list(filter(lambda x: x>5, numeros))
+  print(lista)
+  print(f'Hay {len(lista)} número/s mayor/es que 5')
+
+mayor_que_5(numbers)
